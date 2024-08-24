@@ -1,3 +1,8 @@
-/home/wilinton/Área de Trabalho/coding/mavenproject1/src/main/java/org/esig/mavenproject1/JakartaRestConfiguration.java
-/home/wilinton/Área de Trabalho/coding/mavenproject1/src/main/java/org/esig/mavenproject1/model/Tasks.java
-/home/wilinton/Área de Trabalho/coding/mavenproject1/src/main/java/org/esig/mavenproject1/resources/JakartaEE11Resource.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/JakartaRestConfiguration.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/dao/TaskDao.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/dao/TaskDaoImpl.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/enums/Priority.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/enums/Responsibles.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/enums/Status.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/model/Tasks.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/resources/JakartaEE11Resource.java

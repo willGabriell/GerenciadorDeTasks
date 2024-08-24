@@ -12,6 +12,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
 import org.esig.mavenproject1.enums.Priority;
+import org.esig.mavenproject1.enums.Responsibles;
 import org.esig.mavenproject1.enums.Status;
 
 @Entity
@@ -27,8 +28,9 @@ public class Tasks {
     @Column(name = "description")
     private String descricao;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "responsible")
-    private String responsavel;
+    private Responsibles responsavel;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "priority")
@@ -44,10 +46,6 @@ public class Tasks {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitulo() {
@@ -66,11 +64,11 @@ public class Tasks {
         this.descricao = descricao;
     }
 
-    public String getResponsavel() {
+    public Responsibles getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(String responsavel) {
+    public void setResponsavel(Responsibles responsavel) {
         this.responsavel = responsavel;
     }
 

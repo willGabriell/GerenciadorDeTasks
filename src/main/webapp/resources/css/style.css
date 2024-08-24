@@ -1,0 +1,48 @@
+.form {
+    border: 1px solid gray;
+    background-color: #f0f1e5;
+    border-radius: 8px;
+    padding: 20px;
+    width: 40%;
+    margin: 2% auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    
+}
+
+.cad-btn {
+    border: none;
+    background-color: darkgreen;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    height: 45px;
+}
+
+input {
+    width: 100%;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+select {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: #ebebeb;
+}
+
+.label{
+    text-align: center;
+    font-weight: bold;
+}
