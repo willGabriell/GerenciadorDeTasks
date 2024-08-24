@@ -2,6 +2,8 @@ package org.esig.mavenproject1.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,6 +11,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import org.esig.mavenproject1.enums.Priority;
+import org.esig.mavenproject1.enums.Status;
 
 @Entity
 @Table(name = "tasks")
@@ -26,15 +30,17 @@ public class Tasks {
     @Column(name = "responsible")
     private String responsavel;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "priority")
-    private String prioridade;
+    private Priority prioridade;
     
     @Column(name = "deadline")
     @Temporal(TemporalType.DATE)
     private Date deadline;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Boolean status;
+    private Status status;
 
     public int getId() {
         return id;
@@ -68,11 +74,11 @@ public class Tasks {
         this.responsavel = responsavel;
     }
 
-    public String getPrioridade() {
+    public Priority getPrioridade() {
         return prioridade;
     }
 
-    public void setPrioridade(String prioridade) {
+    public void setPrioridade(Priority prioridade) {
         this.prioridade = prioridade;
     }
 
@@ -84,11 +90,11 @@ public class Tasks {
         this.deadline = deadline;
     }
 
-    public Boolean getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
