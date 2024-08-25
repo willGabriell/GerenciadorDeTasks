@@ -17,32 +17,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:form styleClass="form">
         <h:panelGrid columns="2" cellpadding="5">
             <h:outputLabel for="title" value="Titulo: " styleClass="label"/>
-            <h:inputText id="title" value="#{taskBean.task.title}" required="true"/>
+            <h:inputText id="title" value="#{TaskBean.task.titulo}" required="true"/>
             
             <h:outputLabel for="description" value="Descrição: " styleClass="label"/>
-            <h:inputTextarea id="description" value="#{taskBean.task.description}" required="true" styleClass="description"/>
+            <h:inputTextarea id="description" value="#{TaskBean.task.descricao}" required="true" styleClass="description"/>
             
             <h:outputLabel for="priority" value="Prioridade" styleClass="label"/>
-            <h:selectOneMenu id="priority" value="#{taskBean.task.priority}" required="true">
+            <h:selectOneMenu id="priority" value="#{TaskBean.task.prioridade}" required="true">
                 <f:selectItem itemValue="ALTA" itemLabel="Alta"/>
                 <f:selectItem itemValue="MEDIA" itemLabel="Média"/>
                 <f:selectItem itemValue="BAIXA" itemLabel="Baixa"/>
             </h:selectOneMenu>
             
             <h:outputLabel for="responsible" value="Responsável:" styleClass="label"/>
-            <h:selectOneMenu id="responsible" value="#{taskBean.task.status}" required="true">
-                <f:selectItem itemValue="JOÃO" itemLabel="João"/>
-                <f:selectItem itemValue="ANTÔNIO" itemLabel="Antônio"/>
+            <h:selectOneMenu id="responsible" value="#{TaskBean.task.responsavel}" required="true">
+                <f:selectItem itemValue="GABRIEL" itemLabel="Gabriel"/>
+                <f:selectItem itemValue="WILINTON" itemLabel="Wilinton"/>
                 <f:selectItem itemValue="CLARA" itemLabel="Clara"/>
                 <f:selectItem itemValue="MARIA" itemLabel="Maria"/>
             </h:selectOneMenu>
             
             <h:outputLabel for="deadline" value="Deadline:" styleClass="label"/>
-            <h:inputText id="deadline" value="#{taskBean.task.deadline}">
-                <f:convertDateTime pattern="yyyy-MM-dd"/>
+            <h:inputText id="deadline" value="#{TaskBean.task.deadline}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
             </h:inputText>
             
-            <h:commandButton value="Cadastrar" action="#{taskBean.addTask}" styleClass="cad-btn"/>
+            <h:commandButton value="Cadastrar" action="#{TaskBean.addTask}" styleClass="cad-btn"/>
         </h:panelGrid>
     </h:form>
 </h:body>

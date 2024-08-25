@@ -1,4 +1,5 @@
 /home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/JakartaRestConfiguration.java
+/home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/bean/TaskBean.java
 /home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/dao/TaskDao.java
 /home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/dao/TaskDaoImpl.java
 /home/wilinton/Área de Trabalho/coding/GerenciadorTasks/src/main/java/org/esig/mavenproject1/enums/Priority.java

@@ -42,7 +42,7 @@ public class Tasks {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    private Status status = Status.EM_ANDAMENTO;
 
     public int getId() {
         return id;

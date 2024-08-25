@@ -1,11 +1,13 @@
 package org.esig.mavenproject1.dao;
 
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import org.esig.mavenproject1.model.Tasks;
 
+@Stateless
 public class TaskDaoImpl implements TaskDao{
     
     @PersistenceContext

@@ -1,5 +1,6 @@
 org/esig/mavenproject1/JakartaRestConfiguration.class
 org/esig/mavenproject1/enums/Responsibles.class
+org/esig/mavenproject1/bean/TaskBean.class
 org/esig/mavenproject1/dao/TaskDao.class
 org/esig/mavenproject1/enums/Priority.class
 org/esig/mavenproject1/model/Tasks.class
