@@ -3,12 +3,12 @@
     background-color: #f0f1e5;
     border-radius: 8px;
     padding: 20px;
-    width: 40%;
     margin: 2% auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-wrap: wrap; /* Para os elementos quebrarem linha conforme o tamanho da tela */
     justify-content: center;
-    
+    max-width: 80%; /* Limita a largura máxima */
 }
 
 .cad-btn {
@@ -21,28 +21,61 @@
     height: 45px;
 }
 
-input {
+.filters {
     width: 100%;
-    flex: 1;
+    
+}
+
+.labelCol {
+    width: 15%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.inputCol {
+    width: 35%;
+    padding-bottom: 10px;
+}
+
+input, select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #DDD;
     border-radius: 5px;
     outline: none;
     font-size: 1rem;
     font-weight: 600;
+    box-sizing: border-box;
 }
 
-select {
-    width: 100%;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-transform: capitalize;
-    background-color: #ebebeb;
-}
-
-.label{
+.table {
+    border: 1px solid gray;
+    width: 95%;
     text-align: center;
+}
+
+.actions-group {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.actions-group h\:commandButton {
+    display: inline-block;
+}
+
+.act-btn {
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.buscar-btn {
+    border: none;
+    background-color: darkgreen;
+    border-radius: 10px;
+    color: white;
     font-weight: bold;
+    width: 150px;
+    height: 45px;
+    margin: 1%; /* Espaçamento entre o botão e os filtros */
 }

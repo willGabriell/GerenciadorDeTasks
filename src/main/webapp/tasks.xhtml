@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:inputText id="title" value="#{TaskBean.task.titulo}" required="true"/>
             
             <h:outputLabel for="description" value="Descrição: " styleClass="label"/>
-            <h:inputTextarea id="description" value="#{TaskBean.task.descricao}" required="true" styleClass="description"/>
+            <h:inputText id="description" value="#{TaskBean.task.descricao}" required="true"/>
             
             <h:outputLabel for="priority" value="Prioridade" styleClass="label"/>
             <h:selectOneMenu id="priority" value="#{TaskBean.task.prioridade}" required="true">
@@ -45,5 +45,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:commandButton value="Cadastrar" action="#{TaskBean.addTask}" styleClass="cad-btn"/>
         </h:panelGrid>
     </h:form>
+ 
+<h:form styleClass="form">
+    <!-- Filtros -->
+    <h:panelGrid columns="4" styleClass="filters" columnClasses="labelCol,inputCol">
+        <h:outputLabel for="filtroNumero" value="Número:" />
+        <h:inputText id="filtroNumero" value="#{TaskBean.filterNumber}" />
+
+        <h:outputLabel for="filtroTituloDescricao" value="Título: " />
+        <h:inputText id="filtroTituloDescricao" value="#{TaskBean.filterTitleDesc}" />
+
+        <h:outputLabel for="filtroResponsavel" value="Responsável:" />
+        <h:selectOneMenu id="filtroResponsavel" value="#{TaskBean.filterResp}">
+                <f:selectItem itemValue="GABRIEL" itemLabel="Gabriel"/>
+                <f:selectItem itemValue="WILINTON" itemLabel="Wilinton"/>
+                <f:selectItem itemValue="CLARA" itemLabel="Clara"/>
+                <f:selectItem itemValue="MARIA" itemLabel="Maria"/>
+        </h:selectOneMenu>
+
+        <h:outputLabel for="filtroSituacao" value="Situação:" />
+        <h:selectOneMenu id="filtroSituacao" value="#{TaskBean.filterStatus}">
+            <f:selectItem itemLabel="Selecione" itemValue="" />
+            <f:selectItem itemLabel="Em andamento" itemValue="EM_ANDAMENTO" />
+            <f:selectItem itemLabel="Concluída" itemValue="CONCLUIDA" />
+        </h:selectOneMenu>
+    </h:panelGrid>
+
+    <h:commandButton value="Buscar Tarefas" action="#{TaskBean.searchTasks()}" styleClass="buscar-btn"/>
+
+    <!-- Tabela de Tarefas -->
+    <h:dataTable value="#{TaskBean.tasks}" var="task" styleClass="table">
+        <h:column>
+            <f:facet name="header">Número</f:facet>
+            #{task.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Título</f:facet>
+            #{task.titulo}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Responsável</f:facet>
+            #{task.responsavel}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Situação</f:facet>
+            #{task.status}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Ações</f:facet>
+            <h:panelGroup layout="inline" styleClass="actions-group">
+                <h:commandButton value="Editar" action="#{TaskBean.updateTask(task)}" styleClass="act-btn"/>
+                <h:commandButton value="Excluir" action="#{TaskBean.removeTask(task)}" styleClass="act-btn"/>
+                <h:commandButton value="Concluir" action="#{TaskBean.finishTask(task)}" rendered="#{task.status eq 'EM_ANDAMENTO'}" styleClass="act-btn"/>
+            </h:panelGroup>
+        </h:column>
+    </h:dataTable>
+</h:form>
+
+
 </h:body>
 </html>

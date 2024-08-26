@@ -45,7 +45,7 @@ public class TaskDaoImpl implements TaskDao{
         Tasks existingTask = em.find(Tasks.class, taskToDelete.getId());
         
         if (existingTask != null) {
-            em.remove(taskToDelete);
+            em.remove(existingTask);
         } else {
             throw new EntityNotFoundException("Nenhuma tarefa encontrada");
         }
