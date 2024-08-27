@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:outputStylesheet name="css/style.css" />
 </h:head>
 <h:body>
-    <h:form styleClass="form">
+    <h:form styleClass="form" rendered="#{TaskBean.create}">
         <h:panelGrid columns="2" cellpadding="5">
             <h:outputLabel for="title" value="Titulo: " styleClass="label"/>
             <h:inputText id="title" value="#{TaskBean.task.titulo}" required="true"/>
@@ -43,6 +43,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             </h:inputText>
             
             <h:commandButton value="Cadastrar" action="#{TaskBean.addTask}" styleClass="cad-btn"/>
+        </h:panelGrid>
+    </h:form>
+    
+    <h:form id="editForm" rendered="#{TaskBean.editing}" styleClass="form">
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputLabel for="editTitle" value="Título: " styleClass="label"/>
+        <h:inputText id="editTitle" value="#{TaskBean.task.titulo}" required="true"/>
+        
+        <h:outputLabel for="editDescription" value="Descrição: " styleClass="label"/>
+        <h:inputText id="editDescription" value="#{TaskBean.task.descricao}" required="true"/>
+        
+        <h:outputLabel for="editPriority" value="Prioridade" styleClass="label"/>
+        <h:selectOneMenu id="editPriority" value="#{TaskBean.task.prioridade}" required="true">
+            <f:selectItem itemValue="ALTA" itemLabel="Alta"/>
+            <f:selectItem itemValue="MEDIA" itemLabel="Média"/>
+            <f:selectItem itemValue="BAIXA" itemLabel="Baixa"/>
+        </h:selectOneMenu>
+        
+        <h:outputLabel for="editResponsible" value="Responsável:" styleClass="label"/>
+        <h:selectOneMenu id="editResponsible" value="#{TaskBean.task.responsavel}" required="true">
+            <f:selectItem itemValue="GABRIEL" itemLabel="Gabriel"/>
+            <f:selectItem itemValue="WILINTON" itemLabel="Wilinton"/>
+            <f:selectItem itemValue="CLARA" itemLabel="Clara"/>
+            <f:selectItem itemValue="MARIA" itemLabel="Maria"/>
+        </h:selectOneMenu>
+        
+        <h:outputLabel for="editDeadline" value="Deadline:" styleClass="label"/>
+        <h:inputText id="editDeadline" value="#{TaskBean.task.deadline}">
+            <f:convertDateTime pattern="dd-MM-yyyy"/>
+        </h:inputText>
+        
+        <h:commandButton value="Salvar Alterações" action="#{TaskBean.updateTask(TaskBean.task)}" styleClass="cad-btn"/>
+        <h:commandButton value="Cancelar" action="#{TaskBean.cancelEdit}" styleClass="cancel-btn"/>
         </h:panelGrid>
     </h:form>
  
@@ -97,13 +130,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h:column>
             <f:facet name="header">Ações</f:facet>
             <h:panelGroup layout="inline" styleClass="actions-group">
-                <h:commandButton value="Editar" action="#{TaskBean.updateTask(task)}" styleClass="act-btn"/>
+                <h:commandButton value="Editar" action="#{TaskBean.prepareEditTask(task)}" styleClass="act-btn"/>
                 <h:commandButton value="Excluir" action="#{TaskBean.removeTask(task)}" styleClass="act-btn"/>
                 <h:commandButton value="Concluir" action="#{TaskBean.finishTask(task)}" rendered="#{task.status eq 'EM_ANDAMENTO'}" styleClass="act-btn"/>
             </h:panelGroup>
         </h:column>
     </h:dataTable>
 </h:form>
+
 
 
 </h:body>

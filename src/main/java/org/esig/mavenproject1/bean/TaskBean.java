@@ -3,7 +3,6 @@ package org.esig.mavenproject1.bean;
 import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
@@ -29,8 +28,11 @@ public class TaskBean implements Serializable{
     private String filterTitleDesc;
     private Responsibles filterResp;
     private Status filterStatus;
-    
+   
+    private boolean create = true;
     private boolean searchPerformed = false;
+    private boolean editing = false;
+    
 
     @PostConstruct
     public void init() {
@@ -69,7 +71,17 @@ public class TaskBean implements Serializable{
         this.filterStatus = filterStatus;
     }
     
+    public boolean isCreate() {
+        return create;
+    }
     
+    public boolean isEditing() {
+        return editing;
+    }
+
+    public void setEditing(boolean editing) {
+        this.editing = editing;
+    }
 
     public Tasks getTask() {
         return task;
@@ -124,5 +136,30 @@ public class TaskBean implements Serializable{
         return tasks;
     }
     
+    @Transactional
+    public void updateTask() {
+        if (task != null) {
+            taskDao.updateTask(task);
+            tasks = taskDao.getTasks();
+            task = new Tasks();
+            editing = false;
+            create = true;  
+        }
+        
+    }
+    
+    public void cancelEdit() {
+    task = new Tasks();
+    this.editing = false;
+    this.create = true;
+}
+
+    public void prepareEditTask(Tasks taskToEdit) {
+    this.task = taskToEdit;
+    this.editing = true;
+    this.create = false;
+}
+
+
     
 }
