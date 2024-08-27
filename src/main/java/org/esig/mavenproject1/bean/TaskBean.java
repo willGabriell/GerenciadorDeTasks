@@ -1,35 +1,47 @@
 package org.esig.mavenproject1.bean;
 
 import jakarta.annotation.ManagedBean;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 import org.esig.mavenproject1.dao.TaskDao;
+import org.esig.mavenproject1.enums.Responsibles;
 import org.esig.mavenproject1.enums.Status;
 import org.esig.mavenproject1.model.Tasks;
 
 @Named("TaskBean")
-@RequestScoped
+@ViewScoped
 @ManagedBean
-public class TaskBean {
+public class TaskBean implements Serializable{
+    private static final long serialVersionUID = 1L;
     
     @EJB
     private TaskDao taskDao;
     private Tasks task = new Tasks();
     private List<Tasks> tasks;
     
-    private String filterNumber;
+    private Integer filterNumber;
     private String filterTitleDesc;
-    private String filterResp;
-    private String filterStatus;
+    private Responsibles filterResp;
+    private Status filterStatus;
+    
+    private boolean searchPerformed = false;
 
-    public String getFilterNumber() {
+    @PostConstruct
+    public void init() {
+        tasks = taskDao.searchTasks(null, null, null, null);
+    }
+    
+    public Integer getFilterNumber() {
         return filterNumber;
     }
 
-    public void setFilterNumber(String filterNumber) {
+    public void setFilterNumber(Integer filterNumber) {
         this.filterNumber = filterNumber;
     }
 
@@ -41,19 +53,19 @@ public class TaskBean {
         this.filterTitleDesc = filterTitleDesc;
     }
 
-    public String getFilterResp() {
+    public Responsibles getFilterResp() {
         return filterResp;
     }
 
-    public void setFilterResp(String filterResp) {
+    public void setFilterResp(Responsibles filterResp) {
         this.filterResp = filterResp;
     }
 
-    public String getFilterStatus() {
+    public Status getFilterStatus() {
         return filterStatus;
     }
 
-    public void setFilterStatus(String filterStatus) {
+    public void setFilterStatus(Status filterStatus) {
         this.filterStatus = filterStatus;
     }
     
@@ -88,17 +100,28 @@ public class TaskBean {
     }
     
     public List<Tasks> getTasks() {
-        tasks = taskDao.getTasks();
-        return tasks;
+        if(searchPerformed) {
+            return tasks;
+        } else {
+            tasks = taskDao.getTasks();
+            return tasks;    
+        }      
     }
+    
     
     public void finishTask(Tasks task) {
         task.setStatus(Status.CONCLUIDA);
         taskDao.updateTask(task);
     }
     
-    public void searchTasks() {
-        
+    public List<Tasks> searchTasks() {
+        tasks = taskDao.searchTasks(filterNumber, filterTitleDesc, filterResp, filterStatus);
+        System.out.println("total encontrada: " + tasks.size());
+        searchPerformed = true;
+        for (Tasks t : tasks) {
+        System.out.println("Tarefa: " + t.getId() + " - " + t.getTitulo());
+        }
+        return tasks;
     }
     
     

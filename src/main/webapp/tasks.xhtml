@@ -57,6 +57,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
         <h:outputLabel for="filtroResponsavel" value="Responsável:" />
         <h:selectOneMenu id="filtroResponsavel" value="#{TaskBean.filterResp}">
+                <f:selectItem itemLabel="Selecione" itemValue="" />
                 <f:selectItem itemValue="GABRIEL" itemLabel="Gabriel"/>
                 <f:selectItem itemValue="WILINTON" itemLabel="Wilinton"/>
                 <f:selectItem itemValue="CLARA" itemLabel="Clara"/>
@@ -71,10 +72,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         </h:selectOneMenu>
     </h:panelGrid>
 
-    <h:commandButton value="Buscar Tarefas" action="#{TaskBean.searchTasks()}" styleClass="buscar-btn"/>
+    <h:commandButton value="Buscar Tarefas" action="#{TaskBean.searchTasks()}" styleClass="buscar-btn">
+        <f:ajax execute="@form" render="tasksTable"/>
+    </h:commandButton>
 
     <!-- Tabela de Tarefas -->
-    <h:dataTable value="#{TaskBean.tasks}" var="task" styleClass="table">
+    <h:dataTable id="tasksTable" value="#{TaskBean.tasks}" var="task" styleClass="table">
         <h:column>
             <f:facet name="header">Número</f:facet>
             #{task.id}
