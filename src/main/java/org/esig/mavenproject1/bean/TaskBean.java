@@ -95,6 +95,7 @@ public class TaskBean implements Serializable{
     public void addTask() {
         taskDao.save(task);
         task = new Tasks();
+        searchPerformed = false;
         tasks = taskDao.getTasks();
     }
     
@@ -112,18 +113,17 @@ public class TaskBean implements Serializable{
     }
     
     public List<Tasks> getTasks() {
-        if(searchPerformed) {
-            return tasks;
-        } else {
-            tasks = taskDao.getTasks();
-            return tasks;    
-        }      
+        if(!searchPerformed) {
+            tasks = taskDao.searchTasks(null, null, null, Status.EM_ANDAMENTO);
+        }
+        return tasks;
     }
     
     
     public void finishTask(Tasks task) {
         task.setStatus(Status.CONCLUIDA);
         taskDao.updateTask(task);
+         tasks = taskDao.searchTasks(null, null, null, Status.EM_ANDAMENTO);
     }
     
     public List<Tasks> searchTasks() {
