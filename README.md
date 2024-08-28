@@ -1,5 +1,5 @@
 # Gestão de Tarefas
-Este projeto é um gerenciador de tarefas desenvolvido utilizando Jakarta Faces (JSF) e Hibernate, com banco de dados PostgreSQL. O objetivo é fornecer uma aplicação web para criar, atualizar, remover e listar tarefas, com funcionalidades adicionais para filtrar e marcar tarefas como concluídas.
+Este projeto é um gerenciador de tarefas desenvolvido utilizando JSF e Hibernate, com banco de dados PostgreSQL. O objetivo é fornecer uma aplicação web para criar, atualizar, remover e listar tarefas, com funcionalidades adicionais para filtrar e marcar tarefas como concluídas.
 
 ## Funcionalidades
 - Cadastro de Tarefas: Permite criar novas tarefas com título, descrição, responsável, prioridade, deadline e status.
