@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
--->
-<!-- add-task.xhtml -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -80,7 +75,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:form>
  
 <h:form styleClass="form">
-    <!-- Filtros -->
     <h:panelGrid columns="4" styleClass="filters" columnClasses="labelCol,inputCol">
         <h:outputLabel for="filtroNumero" value="Número:" />
         <h:inputText id="filtroNumero" value="#{TaskBean.filterNumber}" />
@@ -99,7 +93,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
         <h:outputLabel for="filtroSituacao" value="Situação:" />
         <h:selectOneMenu id="filtroSituacao" value="#{TaskBean.filterStatus}">
-           <!-- <f:selectItem itemLabel="Selecione" itemValue="" /> -->
             <f:selectItem itemLabel="Em andamento" itemValue="EM_ANDAMENTO" />
             <f:selectItem itemLabel="Concluída" itemValue="CONCLUIDA" />
         </h:selectOneMenu>
@@ -109,7 +102,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <f:ajax execute="@form" render="tasksTable"/>
     </h:commandButton>
 
-    <!-- Tabela de Tarefas -->
     <h:dataTable id="tasksTable" value="#{TaskBean.tasks}" var="task" styleClass="table">
         <h:column>
             <f:facet name="header">Número</f:facet>
